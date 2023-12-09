@@ -1,0 +1,85 @@
+<html>
+<head>    
+    <title>Form Data Diri</title>
+</head>
+<body>
+
+    <h2>Form Data Diri</h2>
+
+    <form id="fDataDiri">
+	<div class="mb-3">
+        <label for="namaLengkap">Nama Lengkap:</label>
+        <input type="text" id="namaLengkap" name="namaLengkap"><br>
+
+        <label>Tempat Tanggal Lahir:</label>
+        <input type="text" id="tempatLahir" name="tempatLahir">
+        <input type="text" id="tanggalLahir" name="tanggalLahir">
+        <input type="text" id="bulanLahir" name="bulanLahir">
+        <input type="text" id="tahunLahir" name="tahunLahir"><br>
+
+        <label for="alamat">Alamat:</label>
+        <textarea id="alamat" name="alamat"></textarea><br>
+
+        <label for="noHp">No HP:</label>
+        <input type="tel" id="noHp" name="noHp"><br>
+
+        <label>Jenis Kelamin:</label>
+        <input type="radio" id="lakiLaki" name="jenisKelamin" value="Laki-laki" required>
+        <label for="lakiLaki">Laki-laki</label>
+        <input type="radio" id="perempuan" name="jenisKelamin" value="Perempuan" required>
+        <label for="perempuan">Perempuan</label><br>
+
+        <label for="agama">Agama:</label>
+        <select id="agama" name="agama">
+            <option value="Islam">Islam</option>
+            <option value="Kristen">Kristen</option>
+            <option value="Hindu">Hindu</option>
+            <option value="Buddha">Buddha</option>
+        </select><br>
+
+        <label>Hobi:</label>
+        <input type="checkbox" id="bacaBuku" name="hobi" value="Baca Buku">
+        <label for="bacaBuku">Baca Buku</label>
+        <input type="checkbox" id="olahraga" name="hobi" value="Olahraga">
+        <label for="olahraga">Olahraga</label>
+        <input type="checkbox" id="mainGame" name="hobi" value="Main Game">
+        <label for="mainGame">Main Game</label>
+        <input type="checkbox" id="hiking" name="hobi" value="Hiking">
+        <label for="hiking">Hiking</label><br>
+
+        <button type="button" onclick="tampilkanDataDiri()">Tampilkan</button>
+        <button type="reset">Reset</button>
+	</div>
+    </form>
+
+    <script>
+        function tampilkanDataDiri() {
+            var namaLengkap = document.getElementById("namaLengkap").value;
+            var tempatLahir = document.getElementById("tempatLahir").value;
+            var tanggalLahir = document.getElementById("tanggalLahir").value;
+            var bulanLahir = document.getElementById("bulanLahir").value;
+            var tahunLahir = document.getElementById("tahunLahir").value;
+            var alamat = document.getElementById("alamat").value;
+            var noHp = document.getElementById("noHp").value;
+            var jenisKelamin = document.querySelector('input[name="jenisKelamin"]:checked').value;
+            var agama = document.getElementById("agama").value;
+            
+            var hobiArray = [];
+            var checkboxes = document.querySelectorAll('input[name="hobi"]:checked');
+            checkboxes.forEach(function (checkbox) {
+                hobiArray.push(checkbox.value);
+            });
+
+            var hasil = "Nama Lengkap: " + namaLengkap +
+                        "\nTempat Tanggal Lahir: " + tempatLahir + ", " + tanggalLahir + "/" + bulanLahir + "/" + tahunLahir +
+                        "\nAlamat: " + alamat +
+                        "\nNo HP: " + noHp +
+                        "\nJenis Kelamin: " + jenisKelamin +
+                        "\nAgama: " + agama +
+                        "\nHobi: " + hobiArray.join(", ");
+
+            alert(hasil);
+        }
+    </script>
+</body>
+</html>
